@@ -1,0 +1,9 @@
+# scheduler script - constantly checks and triggers email sending for any active campaign that fulfills running criteria
+#* * * * * /usr/local/bin/python3.7 /mailer/mailer/crons/scheduler.py >>/var/log/scheduler.log 2>&1
+
+# stats collector script - constantly retrieves aws cloudwatch metrics(sends, deliveries, opens, etc) regarding finished or in progress campaigns
+# date range for campaings to be checked is configured in conf - start_time_day_offset
+#* * * * * /usr/local/bin/python3.7 /mailer/mailer/crons/stats_collector.py >>/var/log/stats.log 2>&1
+
+# aws sns notification script - constantly retrieves boucnes and complaint notifications
+#* * * * * /usr/local/bin/python3.7 /mailer/mailer/crons/notification_handler.py >>/var/log/notification_handler.log 2>&1

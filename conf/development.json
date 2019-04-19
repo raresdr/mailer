@@ -1,0 +1,106 @@
+{
+    "thread_workers_no": 3,
+    "db_info": {
+        "user": "root",
+        "password": "dev",
+    	"host": "127.0.0.1",
+        "database": "db",
+    	"autocommit": 1,
+        "use_unicode": 1
+    },
+    "logger": {
+        "level": "INFO",
+        "format": "%(asctime)s - %(levelname)s - %(message)s",
+        "datefmt": "%d-%b-%y %H:%M:%S",
+        "filemode": "a",
+        "base_path": "/var/log/",
+        "scheduler_filename": "scheduler.log",
+        "campaign_filename": "_campaign.log",
+        "statscollector_filename": "stats_collector.log",
+        "notificationhandler_filename": "notification_handler.log"
+    },
+    "image_base_url": "base_url",
+    "aws": {
+        "region": "aws_region",
+        "aws_access_key_id": "aws_access_key",
+        "aws_secret_access_key": "aws_secret_access_key",
+        "ses": {
+            "configuration_set": "test",
+            "message_tag": "campaign_id",
+            "from_email": "no-reply@mail.raresdr.ro"
+        },
+        "sqs": {
+            "queue_name": "mailer_bounces_complaints",
+            "max_message_no": 10
+        },
+        "cloudwatch": {
+            "start_time_day_offset": 7,
+            "end_time_day_offset": 0,
+            "metrics": [
+                {
+                    "id": "sends",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Send",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "deliveries",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Delivery",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "opens",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Open",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "clicks",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Click",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "rejects",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Reject",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "bounces",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Bounce",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                },
+                {
+                    "id": "complaints",
+                    "namespace": "AWS/SES",
+                    "metric_name": "Complaint",
+                    "period": 86400,
+                    "stat": "SampleCount",
+                    "unit": "Count",
+                    "dimension_name": "campaign_id"
+                }
+            ]
+        }
+    }
+}

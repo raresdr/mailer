@@ -1,0 +1,1 @@
+* * * * * /usr/local/bin/python3.7 /mailer/mailer/scheduler.py >>/var/log/scheduler.log 2>&1
